@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Previewer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.21.2/babel.min.js"></script> -->
+</head>
+<body>
+  <!-- <div id="root"></div>
+  <script type="text/babel" src="./index.js"></script> -->
+    <div class="container mt-5">
+     
+      <div class="row">
+
+        <div class="col-md-6">
+          <h5>Markdown</h5>
+          <textarea id="editor" class="form-control" rows="25" placeholder="Enter your markdown here..."></textarea>
+        </div>
+     
+        <div class="col-md-6">
+          <h5>Preview</h5>
+          <div id="preview"></div>
+        </div>
+     
+      </div>
+
+    </div>
+
+    <script> 
+      window.addEventListener('load', loadText); 
+      function loadText(){ 
+        var xhr = new XMLHttpRequest(); 
+        xhr.open('GET', 'test.md', true); 
+        xhr.onload = function(){ 
+          if(this.status == 200){ 
+            document.getElementById('editor').innerHTML+=(this.responseText);
+            const preview = document.getElementById('preview');
+            preview.innerHTML = marked(editor.value);
+            hljs.highlightAll();
+
+            editor.addEventListener('keyup', (e) => {
+              const markdown = e.target.value;
+              preview.innerHTML = marked(markdown);
+              hljs.highlightAll();
+            });
+
+          }else{ 
+              document.write('Something went Wrong ' + this.status); 
+          } 
+        } 
+        xhr.send(); 
+      } 
+    </script> 
+
+</body>
+</html>

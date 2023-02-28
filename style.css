@@ -1,0 +1,15 @@
+body {
+    background-color: #f2f2f2;
+}
+
+#preview{
+    font-family: 'Roboto', sans-serif;
+    padding: 3rem;
+    text-align: left;
+    color: black;
+    border: 1.5px solid #dde0e3;
+    background-color: white;
+    border-radius: 4px;
+    height: 75vh;
+    overflow-y: scroll;
+}
